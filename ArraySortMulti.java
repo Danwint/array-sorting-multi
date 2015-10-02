@@ -42,8 +42,32 @@ public class ArraySortMulti {
 		}
 		System.out.println("}");
 		// ∧ ∧ ∧ ∧ ∧ ∧ ∧ LEAVE THE CODE ABOVE THIS LINE ALONE!!! ∧ ∧ ∧ ∧ ∧ ∧ ∧ 
-		
-		// YOUR CODE TO SORT THE numbers ARRAY GOES HERE
+		int smallestValue;
+		for (int i = 0; i < 5; i++) {
+			int currentIndexLeft = i;
+			int indexOfSmallestLeft = i;
+			for (int j = 0; j < 5; j++) {
+				int currentIndexRight = j;
+				int indexOfSmallestRight = j;
+				smallestValue = numbers[i][j];
+				int k = j + 1;
+				for (int l = i; l < 5; l++) {
+					for ( ; k < 5; k++) {
+						if (numbers[l][k] < smallestValue) {
+							smallestValue = numbers[l][k];
+							indexOfSmallestLeft = l;
+							indexOfSmallestRight = k;
+						}
+					}
+					k = 0;
+				}
+				if (currentIndexLeft != indexOfSmallestLeft || currentIndexRight != indexOfSmallestRight) {
+					int numberStorage = numbers[currentIndexLeft][currentIndexRight];
+					numbers[currentIndexLeft][currentIndexRight] = smallestValue;
+					numbers[indexOfSmallestLeft][indexOfSmallestRight] = numberStorage;
+				}
+			}
+		}
 		
 		// ∨ ∨ ∨ ∨ ∨ ∨ ∨ LEAVE THE CODE BELOW THIS LINE ALONE!!! ∨ ∨ ∨ ∨ ∨ ∨ ∨  
 		boolean isWrong = false;
